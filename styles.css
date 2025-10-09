@@ -285,14 +285,14 @@ button {
 
 #back-button {
   position: fixed;
-  bottom: max(env(safe-area-inset-bottom), 20px);
+  bottom: 0;
   left: 5%;
-  z-index: 100;
   border-radius: 20px;
-  background-color: #c2c2c2;
+  background-color: rgba(49, 49, 49, 0.5);
   padding: 10px 20px;
   font-size: 1.2em;
-  margin-bottom: 0;
+  backdrop-filter: blur(10px);
+  z-index: 100;
 }
 
 .stats-container2 {
