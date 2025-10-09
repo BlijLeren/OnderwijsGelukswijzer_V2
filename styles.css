@@ -1,0 +1,397 @@
+/* font-family: "rig-sans", sans-serif;
+
+Thin
+font-weight: 200;
+Light
+font-weight: 300;
+Regular
+font-weight: 400;
+Medium
+font-weight: 500;
+Semibold
+font-weight: 600;
+Bold
+font-weight: 700;
+Extrabold
+font-weight: 800;
+Black
+font-weight: 900;
+
+font-style: normal;
+font-style: italic; */
+
+/* * {
+  outline: 1px solid red !important;
+} */
+
+html {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  height: 100vh;
+  overflow-x: hidden;
+  background-color: white; /* default background */
+  font-family: "rig-sans", sans-serif;
+  color: #202020;
+  transition: background-color 0.3s ease; /* smooth transition */
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body:has(#welcome-view.active) {
+  background-color: #1995fa;
+  overflow: hidden;
+}
+
+body:has(#quiz-view.active) {
+  background-color: white;
+  overflow: hidden;
+}
+
+body:has(#stats-view.active) {
+  background-color: white;
+}
+
+.view {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-top: env(safe-area-inset-top); /* Add iOS safe area support */
+}
+
+.view.active {
+  display: flex;
+  flex-direction: column;
+}
+
+#familykarakters {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: auto;
+  z-index: 1;
+}
+
+#welcome-view {
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+#welcome-view-content {
+  max-width: 90%;
+  position: relative;
+  z-index: 2;
+}
+
+#welcome-view-content h1 {
+  font-weight: 800;
+}
+
+#welcome-view-content p {
+  font-weight: 600;
+}
+
+#start-button {
+  border-radius: 20px;
+  background-color: #ffbf00;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+#quiz-view {
+  justify-content: center;
+  align-items: center;
+}
+
+#quiz-content {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.quiz-header {
+  position: relative;
+  text-align: center;
+  max-width: 100%;
+  font-size: 1em;
+  margin-bottom: 0px;
+  padding: 20px;
+}
+
+.options-container {
+  display: flex;
+  gap: 20px;
+  width: calc(100% - 40px);
+  max-width: 800px;
+  padding: 20px;
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 1.2em;
+  cursor: pointer;
+  color: white;
+  border: none;
+  margin: 20px 0;
+}
+
+.option {
+  flex: 1;
+  padding: 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: 800;
+  color: #ffffff;
+  transform-origin: center;
+}
+
+#option1 {
+  background-color: #1995fa;
+}
+
+#option2 {
+  background-color: #ffbf00;
+}
+
+.option:hover {
+  transform: scale(1.02);
+}
+
+.option.clicking {
+  animation: clickScale 0.3s ease-in-out;
+}
+
+@keyframes clickScale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.child-text {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.parent-text {
+  font-weight: 700;
+  font-size: 0.9em;
+  color: #ffffff;
+  font-style: italic;
+}
+
+#stats-view {
+  align-items: center;
+  margin-top: 0; /* Remove margin that was causing the shift */
+  padding-top: 20px; /* Add padding instead */
+  font-size: 1em;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.stats-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  max-width: 80%;
+  width: 100%;
+}
+
+.stat-bar {
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  text-align: center;
+  width: 80%;
+}
+
+.stat-bar-container {
+  display: flex;
+  height: 300px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+}
+
+.stat-bar-fill {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #1995fa;
+  transition: height 1s ease-out;
+}
+
+.stat-label {
+  font-weight: 600;
+  justify-content: center; /* center horizontally */
+  align-items: center;
+}
+
+#agora-stat {
+  background-color: #ffbf00;
+}
+
+.stat-percentage {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: 10px;
+  color: white;
+  font-weight: bold;
+  z-index: 1;
+}
+
+#progress {
+  margin-bottom: 10px;
+  color: #666;
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+#current-topic {
+  font-size: 1.4em;
+  font-weight: 700;
+  margin: 0;
+  color: #000;
+}
+
+#back-button {
+  position: fixed;
+  bottom: 2%;
+  left: 2%;
+  z-index: 100;
+  border-radius: 20px;
+  background-color: #c2c2c2;
+  padding: 10px 20px;
+  font-size: 1.2em;
+}
+
+.stats-container2 {
+  display: grid;
+  gap: 0px;
+  grid-template-columns: 1fr;
+  max-width: 80%;
+  width: 100%;
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.stats-container2 .stat-bar-container {
+  height: 30px;
+  margin: 0;
+  border-radius: 20px;
+  background: linear-gradient(to right, #1995fa, white, #ffbf00);
+  position: relative;
+  overflow: visible;
+  margin-bottom: 20px;
+}
+
+.stats-container2 .stat-percentage {
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+  width: 8px;
+  height: 100%;
+  background-color: rgb(49, 49, 49);
+  top: 0;
+  left: 50%;
+  border-radius: 25px;
+  transform: translateX(-50%);
+  transition: left 1s ease-out;
+  /* box-shadow: 0 0 5px rgba(0,0,0,0.5); */
+}
+
+.stats-container2 .stat-value {
+  position: absolute;
+  top: -25px;
+  transform: translateX(-50%);
+  color: #666;
+  font-weight: 600;
+  opacity: 0;
+}
+
+.stats-container2 .stat-label {
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 0px;
+}
+
+.conclusion {
+  justify-content: center;
+  text-align: left;
+  width: 80%;
+  max-width: 100%;
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+#enquetevraag {
+  background-color: #1995fa;
+  color: white;
+  font-weight: 800;
+  font-size: 1.2em;
+}
+
+h3 {
+  margin-top: 40px;
+  color: #202020;
+  font-weight: 800;
+  font-size: 1.5em;
+  max-width: 90%;
+}
+
+.bottomline {
+  margin-top: 200px;
+  position: relative;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.8em;
+  color: #666;
+}
+
+@media (max-width: 600px) {
+  .options-container {
+    flex-direction: column;
+    width: calc(100% - 40px);
+  }
+
+  #familykarakters {
+    width: 350px;
+  }
+
+  /* .stats-container2 {
+        grid-template-columns: repeat(2, 1fr);
+    } */
+}
