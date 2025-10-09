@@ -19,32 +19,23 @@ font-weight: 900;
 
 font-style: normal;
 font-style: italic; */
-
-/* * {
+/* 
+* {
   outline: 1px solid red !important;
 } */
-
-html {
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-}
 
 body {
   margin: 0;
   padding: 0;
   text-align: center;
-  height: 100vh;
+  height: 100vh; /* fallback */
+  height: -webkit-fill-available;
+  min-height: -webkit-fill-available;
   overflow-x: hidden;
   background-color: white; /* default background */
   font-family: "rig-sans", sans-serif;
   color: #202020;
   transition: background-color 0.3s ease; /* smooth transition */
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
 }
 
 body:has(#welcome-view.active) {
@@ -64,13 +55,18 @@ body:has(#stats-view.active) {
 .view {
   display: none;
   width: 100%;
-  height: 100%;
+  height: 100vh; /* fallback */
+  height: -webkit-fill-available;
+  min-height: -webkit-fill-available;
   position: fixed;
   top: 0;
   left: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   padding-top: env(safe-area-inset-top); /* Add iOS safe area support */
+  -webkit-backface-visibility: hidden;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .view.active {
@@ -80,7 +76,7 @@ body:has(#stats-view.active) {
 
 #familykarakters {
   position: absolute;
-  bottom: 0px;
+  bottom: env(safe-area-inset-bottom);
   left: 50%;
   transform: translateX(-50%);
   width: 500px;
@@ -150,6 +146,9 @@ button {
   color: white;
   border: none;
   margin: 20px 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .option {
@@ -165,6 +164,9 @@ button {
   font-weight: 800;
   color: #ffffff;
   transform-origin: center;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 #option1 {
@@ -213,7 +215,9 @@ button {
   padding-top: 20px; /* Add padding instead */
   font-size: 1em;
   position: fixed;
-  height: 100%;
+  height: 100vh; /* fallback */
+  height: -webkit-fill-available;
+  padding-bottom: env(safe-area-inset-bottom);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -286,7 +290,7 @@ button {
 
 #back-button {
   position: fixed;
-  bottom: 2%;
+  bottom: calc(2% + env(safe-area-inset-bottom));
   left: 2%;
   z-index: 100;
   border-radius: 20px;
@@ -379,6 +383,7 @@ h3 {
   text-align: center;
   font-size: 0.8em;
   color: #666;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 @media (max-width: 600px) {
