@@ -4,6 +4,7 @@ let choices = [];
 let isNavigating = false; // Add this at the top with other variables
 
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(SplitText);
 
 // Add event listeners when DOM is loaded
 document.addEventListener("DOMContentLoaded", function () {
@@ -189,28 +190,41 @@ function showResults() {
 
   // GSAP animations
 
-  gsap.registerPlugin(SplitText);
+  // console.clear();
 
-  setTimeout(() => {
-    document.fonts.ready.then(() => {
-      let split;
-      gsap.set(".split", { opacity: 1 });
+  // document.fonts.ready.then(() => {
+  //   let split;
+  //   gsap.set(".split", { opacity: 1 });
 
-      SplitText.create(".split", {
-        type: "lines, words",
-        autoSplit: true,
-        mask: "lines",
-        onSplit: (self) => {
-          gsap.from(self.words, {
-            yPercent: 20,
-            opacity: 0,
-            stagger: 0.02,
-          });
-          return split;
-        },
-      });
-    });
-  }, 50);
+  //   SplitText.create(".split", {
+  //     type: "lines, words",
+  //     autoSplit: true,
+  //     mask: "lines",
+  //     onSplit: (self) => {
+  //       gsap.from(self.words, {
+  //         yPercent: 20,
+  //         opacity: 0,
+  //         stagger: 0.02,
+  //       });
+  //       return split;
+  //     },
+  //   });
+  // });
+
+  var tl = gsap.timeline(),
+    mySplitText = new SplitText(".split", { type: "words,chars" }),
+    chars = mySplitText.chars;
+
+  tl.from(chars, {
+    duration: 0.3,
+    opacity: 0,
+    scale: 0,
+    y: 80,
+    rotationX: 150,
+    transformOrigin: "0% 50% -50",
+    ease: "power3.out",
+    stagger: 0.005,
+  });
 
   setTimeout(() => {
     gsap.to("#resultaatplaatje", {

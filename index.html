@@ -19,7 +19,7 @@
   <body>
     <div id="welcome-view" class="view active">
       <div id="welcome-view-content">
-        <h1>
+        <h1 class="welcom-title">
           Wat als leren zó leuk is, dat je er niet eens vakantie van wilt?
         </h1>
         <p>
@@ -146,7 +146,6 @@
           graag leren en werken op school. De vragen gingen steeds over twee
           manieren van leren: regulier onderwijs en Agora-onderwijs.
         </h3>
-        <h3 class="split">Zie hieronder jullie resultaat</h3>
       </div>
 
       <div id="resultaatplaatje">
@@ -322,6 +321,31 @@
             <span class="stat-percentage" id="motivatie-percentage"></span>
           </div>
         </div>
+
+        <h3>FAQ's</h3>
+
+        <section class="accordion">
+          <div class="tab">
+            <input type="checkbox" name="accordion-1" id="cb1" checked />
+            <label for="cb1" class="tab__label">Checkbox</label>
+            <div class="tab__content">
+              <p>
+                Pure CSS accordion based on the "input:checked + label" style
+                trick.
+              </p>
+            </div>
+          </div>
+          <div class="tab">
+            <input type="checkbox" name="accordion-1" id="cb2" />
+            <label for="cb2" class="tab__label">Open multiple</label>
+            <div class="tab__content">
+              <p>
+                Using <code>&lt;input type="checkbox"&gt;</code> allows to have
+                several tabs open at the same time.
+              </p>
+            </div>
+          </div>
+        </section>
 
         <h3>Wat moeten we nu kiezen?</h3>
         <div class="conclusion">

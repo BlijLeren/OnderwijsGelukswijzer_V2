@@ -20,9 +20,9 @@ font-weight: 900;
 font-style: normal;
 font-style: italic; */
 
-/* * {
+* {
   outline: 1px solid red !important;
-} */
+}
 
 body {
   margin: 0;
@@ -77,6 +77,10 @@ body:has(#stats-view.active) {
   display: flex;
   flex-direction: column;
   opacity: 1;
+}
+
+.welcome-title {
+  will-change: transform, opacity;
 }
 
 #familykarakters {
@@ -228,13 +232,12 @@ button {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
-  max-width: 80%;
-  width: 100%;
-  margin-top: 40px; /* Add some spacing after the SVGs */
+  max-width: 700px;
+  width: 80vw;
 }
 
 .stat-bar {
-  background-color: #f0f0f0;
+  background-color: #ffffff;
   border-radius: 20px;
   text-align: center;
   width: 80%;
@@ -308,9 +311,9 @@ button {
   display: grid;
   gap: 0px;
   grid-template-columns: 1fr;
-  max-width: 80%;
-  width: 100%;
-  background-color: #f0f0f0;
+  max-width: 700px;
+  width: 80vw;
+  background-color: #ffffff;
   border-radius: 20px;
   padding: 20px;
 }
@@ -342,7 +345,6 @@ button {
 
 .stats-container2 .stat-value {
   position: absolute;
-  top: -25px;
   transform: translateX(-50%);
   color: #666;
   font-weight: 600;
@@ -360,7 +362,7 @@ button {
   text-align: left;
   width: 80%;
   max-width: 100%;
-  background-color: #f0f0f0;
+  background-color: #ffffff;
   border-radius: 20px;
   padding: 20px;
 }
@@ -377,6 +379,8 @@ h3 {
   font-weight: 800;
   font-size: 1.5em;
   max-width: 90vw;
+  margin-top: 5vh;
+  margin-bottom: 2vh;
 }
 
 #stats-view1,
@@ -386,14 +390,20 @@ h3 {
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin-top: 0; /* Remove margin that was causing the shift */
+  margin-top: 0;
   font-size: 1em;
   position: relative;
   overflow: visible;
 }
 
 #stats-view1 {
-  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center content */
+  align-items: center; /* Horizontally center content */
+  height: auto; /* Allow the height to adjust based on content */
+  min-height: 50vh; /* Ensure it takes up at least half the viewport height */
+  margin-top: 25vh; /* Add spacing for content below */
 }
 
 #stats-view2 {
@@ -408,6 +418,7 @@ h3 {
   justify-content: center;
   align-items: center;
   border-radius: 20px;
+  filter: drop-shadow(10px 12px 0px rgb(0, 0, 0, 0.2));
 }
 
 #Agoraresultaat svg,
@@ -541,12 +552,86 @@ h3 {
 .transition1 {
   fill: #ffffff;
 }
+/* End gsap */
 
-.split {
+/* accorion */
+.tab {
+  position: relative;
+  width: 100%;
+}
+.tab input {
+  position: absolute;
   opacity: 0;
+  z-index: -1;
+}
+.tab__content {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.35s;
+}
+.tab input:checked ~ .tab__content {
+  max-height: 10rem;
 }
 
-/* End gsap */
+/* Visual styles */
+.accordion {
+  color: #000000;
+  background-color: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 800px;
+  width: 80vw;
+}
+.tab__label,
+.tab__close {
+  display: flex;
+  color: rgb(0, 0, 0);
+  background: #ffffff;
+  cursor: pointer;
+  font-weight: 700;
+}
+.tab__label {
+  justify-content: space-between;
+  padding: 1rem;
+}
+.tab__label::after {
+  content: "\276F";
+  /* width: 1em; */
+  height: 1em;
+  text-align: center;
+  transform: rotate(90deg);
+  transition: all 0.35s;
+}
+.tab input:checked + .tab__label::after {
+  transform: rotate(270deg);
+}
+.tab__content p {
+  margin: 0;
+  padding: 1rem;
+}
+.tab__close {
+  justify-content: flex-end;
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+}
+
+/* Arrow animation */
+.tab input:not(:checked) + .tab__label:hover::after {
+  animation: bounce 0.5s infinite;
+}
+@keyframes bounce {
+  25% {
+    transform: rotate(90deg) translate(0.25rem);
+  }
+  75% {
+    transform: rotate(90deg) translate(-0.25rem);
+  }
+}
+/* end accorion */
 
 /* Theme-specific styles */
 body[data-theme="Structuur"] {
