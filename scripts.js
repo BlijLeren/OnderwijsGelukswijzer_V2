@@ -7,13 +7,17 @@ let isNavigating = false; // Add this at the top with other variables
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("start-button").addEventListener("click", startQuiz);
   document.getElementById("back-button").addEventListener("click", goBack);
-  // document.getElementById('restart-button').addEventListener('click', restartQuiz);
-  document
-    .getElementById("option1")
-    .addEventListener("click", () => selectOption("Regulier"));
-  document
-    .getElementById("option2")
-    .addEventListener("click", () => selectOption("Agora"));
+
+  // Update event listeners to use data attributes instead of fixed options
+  document.getElementById("option1").addEventListener("click", function () {
+    const optionType = this.getAttribute("data-type");
+    selectOption(optionType);
+  });
+
+  document.getElementById("option2").addEventListener("click", function () {
+    const optionType = this.getAttribute("data-type");
+    selectOption(optionType);
+  });
 });
 
 fetch("data.json")
@@ -31,24 +35,30 @@ function startQuiz() {
 
 function showQuestion() {
   const question = quizData[currentQuestion];
+
+  // Set theme attribute on body
+  document.body.setAttribute("data-theme", question.thema);
+
   document.getElementById("progress").textContent = `${currentQuestion + 1}. ${
     question.onderdeelnaam
   }`;
   document.getElementById("current-topic").textContent = question.vraag;
-  // document.getElementById('current-topic').textContent = question.onderdeelnaam;
-  // document.getElementById('progress').textContent =
-  //     `Vraag ${currentQuestion + 1} van ${quizData.length}`;
 
   // Show/hide back button based on question number
   document.getElementById("back-button").style.display =
     currentQuestion > 0 ? "inline-block" : "none";
 
+  // Randomly determine order
+  const isReversed = Math.random() < 0.5;
   const options = document.querySelectorAll(".option");
-  ["Regulier", "Agora"].forEach((type, index) => {
+  const types = isReversed ? ["Agora", "Regulier"] : ["Regulier", "Agora"];
+
+  types.forEach((type, index) => {
     options[index].querySelector(".child-text").textContent =
       question.opties[type].kind;
     options[index].querySelector(".parent-text").textContent =
       question.opties[type].ouder;
+    options[index].setAttribute("data-type", type); // Store the type for reference
   });
 }
 
@@ -56,11 +66,10 @@ function selectOption(choice) {
   if (isNavigating) return;
   isNavigating = true;
 
-  // Add animation class
-  const optionElement =
-    choice === "Regulier"
-      ? document.getElementById("option1")
-      : document.getElementById("option2");
+  // Find selected option element by data-type attribute
+  const optionElement = document.querySelector(
+    `.option[data-type="${choice}"]`
+  );
 
   optionElement.classList.add("clicking");
   setTimeout(() => optionElement.classList.remove("clicking"), 300);
