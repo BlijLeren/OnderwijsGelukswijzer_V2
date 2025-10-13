@@ -54,9 +54,9 @@ body:has(#quiz-view.active) {
 body:has(#stats-view.active) {
   /* background-color: white; */
   overflow-y: auto;
-  .transition1 {
+  /* .transition1 {
     fill: #fff8e6;
-  }
+  } */
 }
 
 .view {
