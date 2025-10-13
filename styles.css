@@ -633,6 +633,30 @@ h3 {
 }
 /* end accorion */
 
+/* Cards */
+.slider-wrapper {
+  overflow-x: hidden;
+  max-width: 80vw;
+  margin-bottom: 20px;
+}
+
+.slider {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+}
+
+.slide {
+  width: 20vw;
+  /* flex-basis: 20rem;
+  flex-shrink: 0; */
+  aspect-ratio: 4/5;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background: hotpink;
+  font-size: 3rem;
+}
+
 /* Theme-specific styles */
 body[data-theme="Structuur"] {
   background-color: #ffffff;

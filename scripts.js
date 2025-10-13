@@ -5,6 +5,7 @@ let isNavigating = false; // Add this at the top with other variables
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(SplitText);
+gsap.registerPlugin(Draggable, InertiaPlugin);
 
 // Add event listeners when DOM is loaded
 document.addEventListener("DOMContentLoaded", function () {
@@ -211,6 +212,8 @@ function showResults() {
   //   });
   // });
 
+  //GSAP
+
   var tl = gsap.timeline(),
     mySplitText = new SplitText(".split", { type: "words,chars" }),
     chars = mySplitText.chars;
@@ -235,11 +238,33 @@ function showResults() {
         markers: true,
       },
       scale: 1,
+      duration: 1.5,
+      ease: "power3.out",
+    });
+    gsap.to(".Resultaatsvg", {
+      scrollTrigger: {
+        trigger: "#resultaatplaatje",
+        start: "top center",
+        toggleActions: "play none none none",
+        markers: true,
+      },
+      scale: 1,
+      rotation: 360,
       duration: 2,
       ease: "power3.out",
     });
   }, 50);
 }
+
+//GSAP Cards
+
+const slider = document.querySelector(".slider");
+
+Draggable.create(slider, {
+  type: "x",
+  intertia: true,
+});
+//gsap cards end
 
 function showView(viewId) {
   // Fade out all views
