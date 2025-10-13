@@ -303,19 +303,18 @@
             <span class="stat-percentage" id="structuur-percentage"></span>
           </div>
 
-          <section>
-            <div class="slider-wrapper">
-              <div class="slider">
-                <div class="slide">1</div>
-                <div class="slide">2</div>
-                <div class="slide">3</div>
-                <div class="slide">4</div>
-                <div class="slide">5</div>
-                <div class="slide">6</div>
-                <div class="slide">7</div>
-                <div class="slide">8</div>
-                <div class="slide">9</div>
-                <div class="slide">10</div>
+          <section class="accordion">
+            <div class="tab">
+              <input type="checkbox" name="accordion-1" id="structuur-opties" />
+              <label for="structuur-opties" class="tab__label"
+                >Gekozen opties</label
+              >
+              <div class="tab__content">
+                <div class="slider-wrapper">
+                  <div class="slider" id="structuur-slider">
+                    <!-- Slides will be populated by JavaScript -->
+                  </div>
+                </div>
               </div>
             </div>
           </section>

@@ -138,6 +138,70 @@ function goBack() {
   setTimeout(() => (isNavigating = false), 300);
 }
 
+function populateStructuurSlider() {
+  const structuurQuestions = quizData.filter((q) => q.thema === "Structuur");
+  const slider = document.getElementById("structuur-slider");
+
+  // Clear existing slides
+  slider.innerHTML = "";
+
+  structuurQuestions.forEach((question, index) => {
+    const choice = choices[quizData.indexOf(question)];
+    if (choice) {
+      const otherChoice = choice === "Regulier" ? "Agora" : "Regulier";
+      const slide = document.createElement("div");
+      slide.className = `slide ${choice.toLowerCase()}`;
+      slide.innerHTML = `
+        <div class="slide-header">
+          <div class="slide-title">${question.onderdeelnaam}</div>
+        </div>
+        <div class="slide-content active" data-type="${choice}">
+          <div class="slide-choice">${question.opties[choice].kind}</div>
+          <div class="slide-choice">${question.opties[choice].ouder}</div>
+        </div>
+        <div class="slide-content" data-type="${otherChoice}">
+          <div class="slide-choice">${question.opties[otherChoice].kind}</div>
+          <div class="slide-choice">${question.opties[otherChoice].ouder}</div>
+        </div>
+        <button class="toggle-btn" title="Wissel antwoord">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+            <path d="M8.22673 13.3292C8.51492 14.1471 9.06116 14.8493 9.78313 15.3298C10.5051 15.8103 11.3637 16.0432 12.2296 15.9934C13.0954 15.9436 13.9216 15.6137 14.5837 15.0535C15.2458 14.4933 15.7078 13.7332 15.9003 12.8876C16.0927 12.042 16.0051 11.1567 15.6507 10.3652C15.2962 9.57374 14.6941 8.91887 13.9351 8.4993C13.176 8.07974 12.3012 7.91819 11.4424 8.03902C10.0777 8.23101 9.0827 9.23345 8 10M8 10V7M8 10H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </button>
+      `;
+      slider.appendChild(slide);
+
+      // Add toggle functionality
+      const toggleBtn = slide.querySelector(".toggle-btn");
+      const contents = slide.querySelectorAll(".slide-content");
+      toggleBtn.addEventListener("click", () => {
+        // Create flip animation
+        gsap.to(slide, {
+          rotationY: 90,
+          duration: 0.2,
+          onComplete: () => {
+            // Switch content at midpoint of flip
+            contents.forEach((content) => content.classList.toggle("active"));
+            slide.className = `slide ${
+              slide.classList.contains("regulier") ? "agora" : "regulier"
+            }`;
+
+            // Complete flip animation
+            gsap.to(slide, {
+              rotationY: 0,
+              duration: 0.2,
+            });
+          },
+        });
+      });
+    }
+  });
+
+  // Add this at the end of the function
+  setTimeout(initializeSlider, 100); // Small delay to ensure DOM is updated
+}
+
+// Add this to the showResults function, before the GSAP animations
 function showResults() {
   showView("stats-view");
 
@@ -188,6 +252,8 @@ function showResults() {
       )}%</span>`;
     }
   });
+
+  populateStructuurSlider(); // <-- Call the function here
 
   // GSAP animations
 
@@ -257,13 +323,91 @@ function showResults() {
 }
 
 //GSAP Cards
+function initializeSlider() {
+  const slider = document.querySelector(".slider");
+  const slides = gsap.utils.toArray(".slide");
+  const snapPoints = slides.map((slide, i) => -(slide.offsetWidth + 16) * i); // 16px is the gap
+  const mySnap = gsap.utils.snap(snapPoints);
 
-const slider = document.querySelector(".slider");
+  Draggable.create(slider, {
+    type: "x",
+    bounds: {
+      maxX: 0,
+      minX: window.innerWidth - slider.scrollWidth - 50,
+    },
+    inertia: true,
+    snap: {
+      x: function (v) {
+        return mySnap(v);
+      },
+    },
+  });
+}
 
-Draggable.create(slider, {
-  type: "x",
-  intertia: true,
-});
+// Call initializeSlider after populating the slides
+function populateStructuurSlider() {
+  const structuurQuestions = quizData.filter((q) => q.thema === "Structuur");
+  const slider = document.getElementById("structuur-slider");
+
+  // Clear existing slides
+  slider.innerHTML = "";
+
+  structuurQuestions.forEach((question, index) => {
+    const choice = choices[quizData.indexOf(question)];
+    if (choice) {
+      const otherChoice = choice === "Regulier" ? "Agora" : "Regulier";
+      const slide = document.createElement("div");
+      slide.className = `slide ${choice.toLowerCase()}`;
+      slide.innerHTML = `
+        <div class="slide-header">
+          <div class="slide-title">${question.onderdeelnaam}</div>
+        </div>
+        <div class="slide-content active" data-type="${choice}">
+          <div class="slide-choice">${question.opties[choice].kind}</div>
+          <div class="slide-choice">${question.opties[choice].ouder}</div>
+        </div>
+        <div class="slide-content" data-type="${otherChoice}">
+          <div class="slide-choice">${question.opties[otherChoice].kind}</div>
+          <div class="slide-choice">${question.opties[otherChoice].ouder}</div>
+        </div>
+        <button class="toggle-btn" title="Wissel antwoord">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+            <path d="M8.22673 13.3292C8.51492 14.1471 9.06116 14.8493 9.78313 15.3298C10.5051 15.8103 11.3637 16.0432 12.2296 15.9934C13.0954 15.9436 13.9216 15.6137 14.5837 15.0535C15.2458 14.4933 15.7078 13.7332 15.9003 12.8876C16.0927 12.042 16.0051 11.1567 15.6507 10.3652C15.2962 9.57374 14.6941 8.91887 13.9351 8.4993C13.176 8.07974 12.3012 7.91819 11.4424 8.03902C10.0777 8.23101 9.0827 9.23345 8 10M8 10V7M8 10H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </button>
+      `;
+      slider.appendChild(slide);
+
+      // Add toggle functionality
+      const toggleBtn = slide.querySelector(".toggle-btn");
+      const contents = slide.querySelectorAll(".slide-content");
+      toggleBtn.addEventListener("click", () => {
+        // Create flip animation
+        gsap.to(slide, {
+          rotationX: 90,
+          duration: 0.2,
+          onComplete: () => {
+            // Switch content at midpoint of flip
+            contents.forEach((content) => content.classList.toggle("active"));
+            slide.className = `slide ${
+              slide.classList.contains("regulier") ? "agora" : "regulier"
+            }`;
+
+            // Complete flip animation
+            gsap.to(slide, {
+              rotationX: 0,
+              duration: 0.2,
+            });
+          },
+        });
+      });
+    }
+  });
+
+  // Add this at the end of the function
+  setTimeout(initializeSlider, 100); // Small delay to ensure DOM is updated
+}
+
 //gsap cards end
 
 function showView(viewId) {
