@@ -139,20 +139,20 @@ function goBack() {
 function showResults() {
   showView("stats-view");
 
-  // Initialize ScrollTrigger animation only after stats view is shown
+  // GSAP
   setTimeout(() => {
     gsap.to("#resultaatplaatje", {
       scrollTrigger: {
         trigger: "#resultaatplaatje",
         start: "top center",
         toggleActions: "play none none none",
-        markers: true,
+        markers: false,
       },
       scale: 1,
       duration: 2,
       ease: "power1.inOut",
     });
-  }, 100); // Small delay to ensure view transition is complete
+  }, 100); // GSAP
 
   // Calculate overall stats
   const regulierCount = choices.filter((c) => c === "Regulier").length;

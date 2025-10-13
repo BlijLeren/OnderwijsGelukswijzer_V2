@@ -20,9 +20,9 @@ font-weight: 900;
 font-style: normal;
 font-style: italic; */
 
-* {
+/* * {
   outline: 1px solid red !important;
-}
+} */
 
 body {
   margin: 0;
@@ -379,7 +379,8 @@ h3 {
   max-width: 90vw;
 }
 
-#stats-view1 {
+#stats-view1,
+#stats-view2 {
   align-items: center;
   justify-content: center;
   align-items: center;
@@ -388,8 +389,16 @@ h3 {
   margin-top: 0; /* Remove margin that was causing the shift */
   font-size: 1em;
   position: relative;
-  height: 80vh;
   overflow: visible;
+}
+
+#stats-view1 {
+  height: 80vh;
+}
+
+#stats-view2 {
+  height: auto;
+  margin-top: 20vh;
 }
 
 #resultaatplaatje {
@@ -541,6 +550,7 @@ body[data-theme="Structuur"] {
 
   .transition1 {
     fill: #ffffff;
+    transition: fill 0.3s ease;
   }
 
   #option1 {
@@ -562,6 +572,7 @@ body[data-theme="Nieuwsgierigheid"] {
 
   .transition1 {
     fill: #fff8e6;
+    transition: fill 0.3s ease;
   }
 
   #option1 {
@@ -583,6 +594,7 @@ body[data-theme="Samenwerking"] {
 
   .transition1 {
     fill: #f0f7ff;
+    transition: fill 0.3s ease;
   }
 
   #option1 {
@@ -604,6 +616,7 @@ body[data-theme="Motivatie"] {
 
   .transition1 {
     fill: #fff8e6;
+    transition: fill 0.3s ease;
   }
 
   #option1 {
