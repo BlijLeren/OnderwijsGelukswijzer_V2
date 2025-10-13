@@ -35,10 +35,10 @@ body {
   overflow-y: auto;
   font-family: "rig-sans", sans-serif;
   color: #202020;
-  background-color: #1995fa; /* Default color */
+  background-color: #1995fa;
 
-  -webkit-transition: background-color 0.3s ease;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease; /* smooth transition */
+  -webkit-overflow-scrolling: touch;
 }
 
 body:has(#welcome-view.active) {
@@ -55,7 +55,7 @@ body:has(#stats-view.active) {
   /* background-color: white; */
   overflow-y: auto;
   .transition1 {
-    fill: #ffffff;
+    fill: #fff8e6;
   }
 }
 
@@ -537,6 +537,8 @@ h3 {
 
 /* Theme-specific styles */
 body[data-theme="Structuur"] {
+  background-color: #ffffff;
+
   .transition1 {
     fill: #ffffff;
   }
