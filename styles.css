@@ -371,11 +371,10 @@ button {
 }
 
 h3 {
-  margin-top: 40px;
   color: #202020;
   font-weight: 800;
   font-size: 1.5em;
-  max-width: 90%;
+  max-width: 90svw;
 }
 
 #stats-view1 {
@@ -385,25 +384,50 @@ h3 {
   display: flex;
   flex-direction: column;
   margin-top: 0; /* Remove margin that was causing the shift */
-  padding-top: 20px; /* Add padding instead */
   font-size: 1em;
   position: relative;
-  height: 100svh;
+  height: 80svh;
   overflow: visible;
 }
 
 #resultaatplaatje {
-  width: 100px; /* Set appropriate size */
-  height: auto;
-  margin: 20px auto; /* Center horizontally */
-  display: block; /* Ensure block display */
+  width: 70vw; /* Set appropriate size */
+  display: flex; /* Ensure block display */
   scale: 0;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
 }
 
 #Agoraresultaat svg,
 #Regulierresultaat svg {
-  width: 100%;
-  height: auto;
+  /* width: 100%; */
+  padding: 20px;
+}
+
+#Agoraresultaat,
+#Regulierresultaat {
+  width: 70vw; /* Set appropriate size */
+  border-radius: 20px;
+  display: flex; /* Ensure block display */
+  justify-content: center;
+  align-items: center;
+}
+
+#Agoraresultaat {
+  background-color: #ffbf00;
+}
+
+#Regulierresultaat {
+  background-color: #1995fa;
+}
+
+.resultaatplaatjetitel {
+  margin-top: 20px;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.5em;
+  max-width: 90svw;
 }
 
 .bottomline {
@@ -511,7 +535,7 @@ h3 {
 
 /* Theme-specific styles */
 body[data-theme="Structuur"] {
-  /* background-color: #f0f7ff; */
+  background-color: #ffffff;
 
   .transition1 {
     fill: #ffffff;
@@ -532,7 +556,7 @@ body[data-theme="Structuur"] {
 }
 
 body[data-theme="Nieuwsgierigheid"] {
-  /* background-color: #fff8e6; */
+  background-color: #fff8e6;
 
   .transition1 {
     fill: #fff8e6;
@@ -553,7 +577,7 @@ body[data-theme="Nieuwsgierigheid"] {
 }
 
 body[data-theme="Samenwerking"] {
-  /* background-color: #f0f7ff; */
+  background-color: #f0f7ff;
 
   .transition1 {
     fill: #f0f7ff;
@@ -574,7 +598,7 @@ body[data-theme="Samenwerking"] {
 }
 
 body[data-theme="Motivatie"] {
-  /* background-color: #fff8e6; */
+  background-color: #fff8e6;
 
   .transition1 {
     fill: #fff8e6;

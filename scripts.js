@@ -148,7 +148,7 @@ function showResults() {
         toggleActions: "play none none none",
         markers: true,
       },
-      scale: 2,
+      scale: 1,
       duration: 2,
       ease: "power1.inOut",
     });
