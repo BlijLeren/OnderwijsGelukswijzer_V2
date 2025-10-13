@@ -3,6 +3,8 @@ let currentQuestion = 0;
 let choices = [];
 let isNavigating = false; // Add this at the top with other variables
 
+gsap.registerPlugin(ScrollTrigger);
+
 // Add event listeners when DOM is loaded
 document.addEventListener("DOMContentLoaded", function () {
   // document.getElementById("start-button").addEventListener("click", startQuiz);
@@ -38,7 +40,19 @@ document.getElementById("start-button").addEventListener("click", (e) => {
   welcomeView.style.opacity = "0"; // Add this line to trigger fade out
   tl.reversed(!tl.reversed());
 });
-//gsap end
+
+// Remove this global GSAP animation
+// gsap.to("#resultaatplaatje", {
+//   scrollTrigger: {
+//     trigger: "#resultaatplaatje",
+//     start: "top center",
+//     toggleActions: "play none none none",
+//     markers: true,
+//   },
+//   x: 400,
+//   rotation: 360,
+//   duration: 3,
+// });
 
 fetch("data.json")
   .then((response) => response.json())
@@ -125,6 +139,21 @@ function goBack() {
 function showResults() {
   showView("stats-view");
 
+  // Initialize ScrollTrigger animation only after stats view is shown
+  setTimeout(() => {
+    gsap.to("#resultaatplaatje", {
+      scrollTrigger: {
+        trigger: "#resultaatplaatje",
+        start: "top center",
+        toggleActions: "play none none none",
+        markers: true,
+      },
+      scale: 2,
+      duration: 2,
+      ease: "power1.inOut",
+    });
+  }, 100); // Small delay to ensure view transition is complete
+
   // Calculate overall stats
   const regulierCount = choices.filter((c) => c === "Regulier").length;
   const agoraCount = choices.filter((c) => c === "Agora").length;
@@ -133,6 +162,12 @@ function showResults() {
   // Show overall percentages
   const regulierPercentage = Math.round((regulierCount / total) * 100);
   const agoraPercentage = Math.round((agoraCount / total) * 100);
+
+  // Show/hide results based on percentages
+  document.getElementById("Agoraresultaat").style.display =
+    agoraPercentage > regulierPercentage ? "block" : "none";
+  document.getElementById("Regulierresultaat").style.display =
+    regulierPercentage >= agoraPercentage ? "block" : "none";
 
   document.getElementById(
     "regulier-stat"

@@ -19,10 +19,10 @@ font-weight: 900;
 
 font-style: normal;
 font-style: italic; */
-/* 
+
 * {
   outline: 1px solid red !important;
-} */
+}
 
 body {
   margin: 0;
@@ -216,7 +216,6 @@ button {
 #stats-view {
   align-items: center;
   margin-top: 0; /* Remove margin that was causing the shift */
-  padding-top: 20px; /* Add padding instead */
   font-size: 1em;
   position: relative;
   height: auto;
@@ -229,6 +228,7 @@ button {
   justify-items: center;
   max-width: 80%;
   width: 100%;
+  margin-top: 40px; /* Add some spacing after the SVGs */
 }
 
 .stat-bar {
@@ -376,6 +376,34 @@ h3 {
   font-weight: 800;
   font-size: 1.5em;
   max-width: 90%;
+}
+
+#stats-view1 {
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0; /* Remove margin that was causing the shift */
+  padding-top: 20px; /* Add padding instead */
+  font-size: 1em;
+  position: relative;
+  height: 100svh;
+  overflow: visible;
+}
+
+#resultaatplaatje {
+  width: 100px; /* Set appropriate size */
+  height: auto;
+  margin: 20px auto; /* Center horizontally */
+  display: block; /* Ensure block display */
+  scale: 0;
+}
+
+#Agoraresultaat svg,
+#Regulierresultaat svg {
+  width: 100%;
+  height: auto;
 }
 
 .bottomline {
