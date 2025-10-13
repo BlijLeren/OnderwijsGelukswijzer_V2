@@ -5,7 +5,8 @@ let isNavigating = false; // Add this at the top with other variables
 
 // Add event listeners when DOM is loaded
 document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("start-button").addEventListener("click", startQuiz);
+  // document.getElementById("start-button").addEventListener("click", startQuiz);
+
   document.getElementById("back-button").addEventListener("click", goBack);
 
   // Update event listeners to use data attributes instead of fixed options
@@ -19,6 +20,25 @@ document.addEventListener("DOMContentLoaded", function () {
     selectOption(optionType);
   });
 });
+
+//gsap
+let path = document.querySelector(".transition1");
+
+const start = "M 0 100 V 50 Q 50 0 100 50 V 100 z";
+const end = "M 0 100 V 0 Q 50 0 100 0 V 100 z";
+
+let tl = gsap.timeline();
+
+tl.to(path, { attr: { d: start }, ease: "power2.in", duration: 0.5 })
+  .to(path, { attr: { d: end }, ease: "power2.out", onComplete: startQuiz })
+  .reverse();
+
+document.getElementById("start-button").addEventListener("click", (e) => {
+  const welcomeView = document.getElementById("welcome-view");
+  welcomeView.style.opacity = "0"; // Add this line to trigger fade out
+  tl.reversed(!tl.reversed());
+});
+//gsap end
 
 fetch("data.json")
   .then((response) => response.json())
@@ -149,10 +169,22 @@ function showResults() {
 }
 
 function showView(viewId) {
+  // Fade out all views
   document.querySelectorAll(".view").forEach((view) => {
-    view.classList.remove("active");
+    view.style.opacity = "0";
+    setTimeout(() => {
+      view.classList.remove("active");
+    }, 10); // Match transition duration
   });
-  document.getElementById(viewId).classList.add("active");
+
+  // Fade in new view
+  setTimeout(() => {
+    const newView = document.getElementById(viewId);
+    newView.classList.add("active");
+    // Force a reflow to ensure transition happens
+    newView.offsetHeight;
+    newView.style.opacity = "1";
+  }, 10);
 }
 
 function restartQuiz() {

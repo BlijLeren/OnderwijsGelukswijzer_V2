@@ -86,13 +86,39 @@
       </svg>
     </div>
 
+    <!-- gsap -->
+    <svg
+      class="transition"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="xMidYMin slice"
+    >
+      <defs></defs>
+      <path
+        class="transition1"
+        vector-effect="non-scaling-stroke"
+        d="M 0 100 V 100 Q 50 100 100 100 V 100 z"
+      />
+    </svg>
+
     <div id="quiz-view" class="view">
       <div id="quiz-content">
         <div class="quiz-header">
           <div id="progress"></div>
           <h2 id="current-topic"></h2>
         </div>
-        <button id="back-button" style="display: none">←</button>
+        <!-- <button id="back-button" style="display: none">←</button> -->
+
+        <svg
+          id="back-button"
+          style="display: none"
+          xmlns="http://www.w3.org/2000/svg"
+          width="10.605"
+          height="15.555"
+        >
+          <path
+            d="M10.605 12.727 5.656 7.776l4.949-4.948L7.777 0 0 7.776l7.777 7.779 2.828-2.828z"
+          />
+        </svg>
         <div class="options-container">
           <div class="option" id="option1">
             <p class="child-text"></p>
@@ -203,6 +229,8 @@
       </div>
       <p class="bottomline">onderwijsgelukswijzer.nl</p>
     </div>
+    <script src="gsap.min.js"></script>
+    <script src="flip.min.js"></script>
   </body>
   <script src="scripts.js"></script>
 </html>
