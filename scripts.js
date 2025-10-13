@@ -4,6 +4,7 @@ let choices = [];
 let isNavigating = false; // Add this at the top with other variables
 
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(SplitText);
 
 // Add event listeners when DOM is loaded
 document.addEventListener("DOMContentLoaded", function () {
@@ -139,21 +140,6 @@ function goBack() {
 function showResults() {
   showView("stats-view");
 
-  // GSAP
-  setTimeout(() => {
-    gsap.to("#resultaatplaatje", {
-      scrollTrigger: {
-        trigger: "#resultaatplaatje",
-        start: "top center",
-        toggleActions: "play none none none",
-        markers: false,
-      },
-      scale: 1,
-      duration: 2,
-      ease: "power1.inOut",
-    });
-  }, 100); // GSAP
-
   // Calculate overall stats
   const regulierCount = choices.filter((c) => c === "Regulier").length;
   const agoraCount = choices.filter((c) => c === "Agora").length;
@@ -201,6 +187,41 @@ function showResults() {
       )}%</span>`;
     }
   });
+
+  // GSAP animations
+  setTimeout(() => {
+    document.fonts.ready.then(() => {
+      let split;
+
+      SplitText.create(".split", {
+        type: "lines, words",
+        autoSplit: true,
+        mask: "lines",
+        onSplit: (self) => {
+          gsap.from(self.words, {
+            yPercent: 20,
+            opacity: 0,
+            stagger: 0.02,
+          });
+          return split;
+        },
+      });
+    });
+  }, 50);
+
+  setTimeout(() => {
+    gsap.to("#resultaatplaatje", {
+      scrollTrigger: {
+        trigger: "#resultaatplaatje",
+        start: "top center",
+        toggleActions: "play none none none",
+        markers: true,
+      },
+      scale: 1,
+      duration: 2,
+      ease: "power3.out",
+    });
+  }, 50);
 }
 
 function showView(viewId) {

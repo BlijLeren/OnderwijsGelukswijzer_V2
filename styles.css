@@ -394,6 +394,7 @@ h3 {
 
 #stats-view1 {
   height: 80vh;
+  margin-bottom: -20vh;
 }
 
 #stats-view2 {
@@ -540,6 +541,9 @@ h3 {
 
 .transition1 {
   fill: #ffffff;
+}
+
+.split {
 }
 
 /* End gsap */
