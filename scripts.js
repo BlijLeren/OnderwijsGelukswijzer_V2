@@ -4,7 +4,6 @@ let choices = [];
 let isNavigating = false; // Add this at the top with other variables
 
 gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(SplitText);
 
 // Add event listeners when DOM is loaded
 document.addEventListener("DOMContentLoaded", function () {
@@ -189,6 +188,9 @@ function showResults() {
   });
 
   // GSAP animations
+
+  gsap.registerPlugin(SplitText);
+
   setTimeout(() => {
     document.fonts.ready.then(() => {
       let split;
