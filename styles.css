@@ -543,6 +543,7 @@ h3 {
 }
 
 .split {
+  opacity: 0;
 }
 
 /* End gsap */

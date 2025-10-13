@@ -194,6 +194,7 @@ function showResults() {
   setTimeout(() => {
     document.fonts.ready.then(() => {
       let split;
+      gsap.set(".split", { opacity: 1 });
 
       SplitText.create(".split", {
         type: "lines, words",
