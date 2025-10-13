@@ -70,7 +70,15 @@ function startQuiz() {
 function showQuestion() {
   const question = quizData[currentQuestion];
 
-  // Set theme attribute on body
+  // Modify theme setting to work on iOS
+  const themeColors = {
+    "Structuur": "#ffffff",
+    "Nieuwsgierigheid": "#fff8e6",
+    "Samenwerking": "#f0f7ff",
+    "Motivatie": "#fff8e6"
+  };
+  
+  document.body.style.backgroundColor = themeColors[question.thema];
   document.body.setAttribute("data-theme", question.thema);
 
   document.getElementById("progress").textContent = `${currentQuestion + 1}. ${
