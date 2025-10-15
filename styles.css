@@ -20,9 +20,9 @@ font-weight: 900;
 font-style: normal;
 font-style: italic; */
 
-/* * {
+* {
   outline: 1px solid red !important;
-} */
+}
 
 body {
   margin: 0;
@@ -633,6 +633,59 @@ h3 {
 }
 /* end accorion */
 
+.next-intro-button {
+  border-radius: 20px;
+  background-color: #1995fa;
+  color: #ffffff;
+  font-weight: 700;
+  margin-top: 20px;
+}
+
+.theme-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 20px;
+  z-index: 1000;
+  max-width: 90%;
+  width: 500px;
+  height: 1000px;
+  max-height: 90%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#quiz_intro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 80vw;
+}
+
+#quiz_intro p {
+  text-align: left;
+}
+
+.theme-popup p {
+  max-width: 80%;
+  text-align: left;
+}
+
+.thema-indicator {
+  color: rgb(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.thema-indicator-big {
+  margin-top: 0;
+  max-width: 90%;
+}
+
 /* Theme-specific styles */
 body[data-theme="thema1"] {
   background-color: #ffffff;
@@ -653,6 +706,15 @@ body[data-theme="thema1"] {
   }
   #current-topic {
     color: #0056b3;
+  }
+  .theme-popup {
+    /* background-color: #1995fa; */
+    background-color: rgb(25, 149, 250, 0.8);
+    backdrop-filter: blur(10px);
+    color: #ffffff;
+  }
+  .next-intro-button {
+    background-color: #ffbf00;
   }
 }
 
@@ -676,6 +738,14 @@ body[data-theme="thema2"] {
   #current-topic {
     color: #cc9900;
   }
+  .theme-popup {
+    background-color: rgb(255, 191, 0, 0.8);
+    backdrop-filter: blur(10px);
+    color: #ffffff;
+  }
+  .next-intro-button {
+    background-color: #1995fa;
+  }
 }
 
 body[data-theme="thema3"] {
@@ -697,6 +767,14 @@ body[data-theme="thema3"] {
   }
   #current-topic {
     color: #0056b3;
+  }
+  .theme-popup {
+    background-color: rgb(25, 149, 250, 0.8);
+    backdrop-filter: blur(10px);
+    color: #ffffff;
+  }
+  .next-intro-button {
+    background-color: #ffbf00;
   }
 }
 
@@ -720,6 +798,14 @@ body[data-theme="thema4"] {
   #current-topic {
     color: #cc9900;
   }
+  .theme-popup {
+    background-color: rgb(255, 191, 0, 0.8);
+    backdrop-filter: blur(10px);
+    color: #ffffff;
+  }
+  .next-intro-button {
+    background-color: #1995fa;
+  }
 }
 
 @media (max-width: 600px) {
@@ -736,3 +822,14 @@ body[data-theme="thema4"] {
         grid-template-columns: repeat(2, 1fr);
     } */
 }
+
+/* .theme-popup::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+} */

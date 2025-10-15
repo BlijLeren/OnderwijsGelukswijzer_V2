@@ -23,6 +23,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const optionType = this.getAttribute("data-type");
     selectOption(optionType);
   });
+
+  // Add event listener for quiz intro next button
+  document
+    .querySelector("#quiz_intro .next-intro-button")
+    .addEventListener("click", () => {
+      document.getElementById("quiz_intro").style.display = "none";
+      document.getElementById("quiz-content").style.display = "block";
+      showQuestion();
+    });
 });
 
 //gsap
@@ -66,11 +75,20 @@ function startQuiz() {
   showView("quiz-view");
   currentQuestion = 0;
   choices = [];
-  showQuestion();
+
+  // Hide quiz content and show initial quiz intro
+  document.getElementById("quiz-content").style.display = "none";
+  document.getElementById("quiz_intro").style.display = "block";
 }
 
 function showQuestion() {
   const question = quizData[currentQuestion];
+
+  // Check if this is an intro question for a theme
+  if (question.introquestion === "yes") {
+    const themeNum = question.themanummer.replace("thema", "");
+    showThemePopup(themeNum);
+  }
 
   // Set theme attribute on body using themanummer instead of thema
   document.body.setAttribute("data-theme", question.themanummer);
@@ -276,4 +294,26 @@ function showView(viewId) {
 
 function restartQuiz() {
   showView("welcome-view");
+}
+
+function showThemePopup(themeNum) {
+  const popup = document.createElement("div");
+  popup.className = "theme-popup";
+  const content = document.getElementById(`thema${themeNum}_intro`).innerHTML;
+  popup.innerHTML = content;
+
+  // Get the original button
+  const originalButton = popup.querySelector(".next-intro-button");
+  const originalText = originalButton.textContent;
+
+  // Replace with new button but keep the text
+  const closeButton = document.createElement("button");
+  closeButton.className = "next-intro-button";
+  closeButton.textContent = originalText;
+  closeButton.onclick = () => popup.remove();
+
+  // Replace old button with new one
+  originalButton.replaceWith(closeButton);
+
+  document.body.appendChild(popup);
 }

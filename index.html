@@ -20,7 +20,7 @@
     <div id="welcome-view" class="view active">
       <div id="welcome-view-content">
         <h1 class="welcom-title">
-          Wat als leren zó leuk is, dat je er niet eens vakantie van wilt?
+          Wat als leren zó leuk is, dat je niet eens vakantie wilt?
         </h1>
         <p>
           Ontdek samen welk voortgezet onderwijs <br />
@@ -100,13 +100,58 @@
       />
     </svg>
 
-    <div id="quiz_intro"></div>
-    <div id="thema1_intro"></div>
-    <div id="thema2_intro"></div>
-    <div id="thema3_intro"></div>
-    <div id="thema4_intro"></div>
-
     <div id="quiz-view" class="view">
+      <div id="quiz_intro" class="intro-section">
+        <h2>Introductie</h2>
+        <p>
+          Beste leerling van groep 7/8, Binnenkort ga jij kiezen naar welke
+          middelbare school je wilt. Dat is een belangrijke en ook best lastige
+          keuze. Misschien denk je een school die lekker dichtbij is, of waar je
+          vriendjes of vriendinnetjes naar toe gaan. Maar wist je dat er ook
+          grote verschillen zijn in de manier waarop scholen lesgeven?<br /><br />
+
+          Deze kieswijzer is er om jou te helpen om ook dáár goed over na te
+          denken. Hij bestaat uit vier thema's met elk drie vragen. Bekijk hem
+          samen met (een van) je ouders en ontdek welk voortgezet onderwijs het
+          beste bij je past. Zodat ook jij later kan zeggen: “Jammer dat het
+          vakantie is!”
+        </p>
+        <button class="next-intro-button">Start</button>
+      </div>
+
+      <div id="thema1_intro" class="intro-section" style="display: none">
+        <p class="thema-indicator">Thema 1</p>
+        <h2 class="thema-indicator-big">Structuur en Planning</h2>
+        <p>
+          De meeste middelbare scholen hebben een vast rooster. Je weet op welke
+          dagen je op welk uur bepaalde vakken kan volgen. Tijdens die uren
+          krijg je uitleg van de docent over de lesstof en krijg je opdrachten
+          mee als huiswerk. Er zijn ook scholen waar je je dag flexibel kan
+          indelen, waar je zelf kiest aan welke lesstof je gaat werken en welke
+          opdrachten je daarvoor maakt. Let wel: in Nederland moeten álle
+          leerlingen een verplicht aantal uren naar school!
+        </p>
+        <button class="next-intro-button">Verder</button>
+      </div>
+      <div id="thema2_intro" class="intro-section" style="display: none">
+        <p class="thema-indicator">Thema 2</p>
+        <h2 class="thema-indicator-big">Leerstof en Autonomie</h2>
+        <p>We onderzoeken wie de leerlingen zijn en hoe zij leren.</p>
+        <button class="next-intro-button">Verder</button>
+      </div>
+      <div id="thema3_intro" class="intro-section" style="display: none">
+        <p class="thema-indicator">Thema 3</p>
+        <h2 class="thema-indicator-big">Leren leren</h2>
+        <p>We bekijken welke onderwijsaanpakken er zijn.</p>
+        <button class="next-intro-button">Verder</button>
+      </div>
+      <div id="thema4_intro" class="intro-section" style="display: none">
+        <p class="thema-indicator">Thema 4</p>
+        <h2 class="thema-indicator-big">Ontwikkeling en Begeleiding</h2>
+        <p>We lichten het toets- en evaluatieproces toe.</p>
+        <button class="next-intro-button">Verder</button>
+      </div>
+
       <div id="quiz-content">
         <div class="quiz-header">
           <div id="progress"></div>
@@ -150,7 +195,8 @@
         <h3 class="split">
           In deze kieswijzer hebben jullie samen keuzes gemaakt over hoe jullie
           graag leren en werken op school. De vragen gingen steeds over twee
-          manieren van leren: regulier onderwijs en Agora-onderwijs.
+          manieren van leren: regulier onderwijs en Agora-onderwijs. Scroll naar
+          beneden voor jullie resultaat.
         </h3>
       </div>
 
