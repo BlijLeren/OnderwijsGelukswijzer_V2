@@ -297,6 +297,10 @@ function restartQuiz() {
 }
 
 function showThemePopup(themeNum) {
+  const overlay = document.createElement("div");
+  overlay.className = "theme-popup-overlay";
+  document.body.appendChild(overlay);
+
   const popup = document.createElement("div");
   popup.className = "theme-popup";
   const content = document.getElementById(`thema${themeNum}_intro`).innerHTML;
@@ -310,10 +314,23 @@ function showThemePopup(themeNum) {
   const closeButton = document.createElement("button");
   closeButton.className = "next-intro-button";
   closeButton.textContent = originalText;
-  closeButton.onclick = () => popup.remove();
+
+  closeButton.onclick = () => {
+    popup.classList.remove("active");
+    overlay.classList.remove("active");
+    setTimeout(() => {
+      popup.remove();
+      overlay.remove();
+    }, 500); // Match transition duration
+  };
 
   // Replace old button with new one
   originalButton.replaceWith(closeButton);
 
   document.body.appendChild(popup);
+
+  // Force reflow and add active class
+  popup.offsetHeight;
+  popup.classList.add("active");
+  overlay.classList.add("active");
 }
