@@ -79,7 +79,7 @@ function startQuiz() {
   // Hide quiz content and show initial quiz intro
   document.getElementById("quiz-content").style.display = "none";
   document.getElementById("quiz_intro").style.display = "block";
-  document.body.setAttribute("data-theme", quiz_intro);
+  document.body.setAttribute("data-theme", "quiz_intro"); // Add this line
 }
 
 function showQuestion() {

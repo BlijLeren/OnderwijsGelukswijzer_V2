@@ -722,6 +722,11 @@ h3 {
 
 body[data-theme="quiz_intro"] {
   background-color: #ffffff;
+
+  .transition1 {
+    fill: #ffffff;
+    transition: fill 0.3s ease;
+  }
 }
 
 /* Theme-specific styles */
