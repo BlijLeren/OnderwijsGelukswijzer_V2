@@ -680,7 +680,6 @@ h3 {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
   opacity: 0;
   transition: opacity 0.4s ease;
   pointer-events: none;
@@ -733,10 +732,10 @@ body[data-theme="quiz_intro"] {
 body[data-theme="thema1"] {
   background-color: #ffffff;
 
-  /* .transition1 {
+  .transition1 {
     fill: #ffffff;
     transition: fill 0.3s ease;
-  } */
+  }
 
   #option1 {
     background-color: #1995fa;
@@ -752,7 +751,7 @@ body[data-theme="thema1"] {
   }
   .theme-popup {
     /* background-color: #1995fa; */
-    background-color: rgb(25, 149, 250, 0.8);
+    background-color: rgba(13, 107, 184, 0.8);
     backdrop-filter: blur(10px);
     color: #ffffff;
   }
@@ -782,7 +781,7 @@ body[data-theme="thema2"] {
     color: #cc9900;
   }
   .theme-popup {
-    background-color: rgb(255, 191, 0, 0.8);
+    background-color: rgba(233, 175, 0, 0.8);
     backdrop-filter: blur(10px);
     color: #ffffff;
   }
@@ -812,7 +811,7 @@ body[data-theme="thema3"] {
     color: #0056b3;
   }
   .theme-popup {
-    background-color: rgb(25, 149, 250, 0.8);
+    background-color: rgba(13, 107, 184, 0.8);
     backdrop-filter: blur(10px);
     color: #ffffff;
   }
@@ -842,7 +841,7 @@ body[data-theme="thema4"] {
     color: #cc9900;
   }
   .theme-popup {
-    background-color: rgb(255, 191, 0, 0.8);
+    background-color: rgba(233, 175, 0, 0.8);
     backdrop-filter: blur(10px);
     color: #ffffff;
   }
