@@ -20,9 +20,9 @@ font-weight: 900;
 font-style: normal;
 font-style: italic; */
 
-* {
+/* * {
   outline: 1px solid red !important;
-}
+} */
 
 body {
   margin: 0;
@@ -215,7 +215,7 @@ button {
 .parent-text {
   font-weight: 700;
   font-size: 0.9em;
-  color: #ffffff;
+  color: rgb(255, 255, 255, 0.8);
   font-style: italic;
 }
 
@@ -322,7 +322,7 @@ button {
   height: 30px;
   margin: 0;
   border-radius: 20px;
-  background: linear-gradient(to right, #1995fa, white, #ffbf00);
+  background: linear-gradient(to right, #1995fa, rgb(255, 255, 255), #ffbf00);
   position: relative;
   overflow: visible;
   margin-bottom: 20px;
@@ -556,6 +556,19 @@ h3 {
 /* End gsap */
 
 /* accorion */
+.accordion {
+  color: #000000;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 90vw;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
 .tab {
   position: relative;
   width: 100%;
@@ -574,25 +587,14 @@ h3 {
   max-height: 500px;
 }
 
-/* Visual styles */
-.accordion {
-  color: #000000;
-  border-radius: 20px;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  margin-bottom: 20px;
-}
 .tab__label,
 .tab__close {
   display: flex;
-  color: rgb(0, 0, 0);
+  color: #202020;
   background: #ffffff;
   cursor: pointer;
   font-weight: 700;
+  filter: drop-shadow(0px 10px 5px rgb(0, 0, 0, 0.1));
 }
 .tab__label {
   justify-content: space-between;
@@ -612,6 +614,8 @@ h3 {
 .tab__content p {
   margin: 0;
   padding: 1rem;
+  background-color: #ffffff;
+  color: #202020;
 }
 .tab__close {
   justify-content: flex-end;
@@ -654,12 +658,12 @@ h3 {
   width: 500px;
   height: 1000px;
   max-height: 90%;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
 }
 
@@ -761,7 +765,7 @@ body[data-theme="thema2"] {
     background-color: #cc9900;
   }
   #progress {
-    color: #ffbf00;
+    color: #c3a036;
   }
   #current-topic {
     color: #cc9900;
@@ -821,7 +825,7 @@ body[data-theme="thema4"] {
     background-color: #cc9900;
   }
   #progress {
-    color: #ffbf00;
+    color: #c3a036;
   }
   #current-topic {
     color: #cc9900;
@@ -849,6 +853,20 @@ body[data-theme="thema4"] {
   /* .stats-container2 {
         grid-template-columns: repeat(2, 1fr);
     } */
+}
+
+#Agora-FAQ,
+#Regulier-FAQ {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* .theme-popup::before {

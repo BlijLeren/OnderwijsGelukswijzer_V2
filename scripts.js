@@ -175,6 +175,12 @@ function showResults() {
   document.getElementById("Regulierresultaat").style.display =
     regulierPercentage >= agoraPercentage ? "block" : "none";
 
+  // Show/hide corresponding FAQ section
+  document.getElementById("Agora-FAQ").style.display =
+    agoraPercentage > regulierPercentage ? "block" : "none";
+  document.getElementById("Regulier-FAQ").style.display =
+    regulierPercentage >= agoraPercentage ? "block" : "none";
+
   document.getElementById(
     "regulier-stat"
   ).style.height = `${regulierPercentage}%`;
@@ -246,13 +252,28 @@ function showResults() {
     stagger: 0.005,
   });
 
+  var t2 = gsap.timeline(),
+    mySplitText = new SplitText(".split2", { type: "words,chars" }),
+    chars2 = mySplitText.chars;
+
+  t2.from(chars2, {
+    duration: 1.5,
+    opacity: 0,
+    scale: 0,
+    y: 80,
+    rotationX: 150,
+    transformOrigin: "0% 50% -50",
+    ease: "power3.out",
+    stagger: 0.005,
+  });
+
   setTimeout(() => {
     gsap.to("#resultaatplaatje", {
       scrollTrigger: {
-        trigger: "#resultaatplaatje",
+        trigger: ".split2",
         start: "top center",
         toggleActions: "play none none none",
-        markers: true,
+        markers: false,
       },
       scale: 1,
       duration: 1.5,
@@ -260,18 +281,18 @@ function showResults() {
     });
     gsap.to(".Resultaatsvg", {
       scrollTrigger: {
-        trigger: "#resultaatplaatje",
+        trigger: ".split2",
         start: "top center",
         toggleActions: "play none none none",
-        markers: true,
+        markers: false,
       },
       scale: 1,
-      rotation: 360,
-      duration: 2,
       ease: "power3.out",
     });
   }, 50);
 }
+
+// GSAP end
 
 function showView(viewId) {
   // Fade out all views
@@ -321,7 +342,7 @@ function showThemePopup(themeNum) {
     setTimeout(() => {
       popup.remove();
       overlay.remove();
-    }, 500); // Match transition duration
+    }, 800); // Match transition duration
   };
 
   // Replace old button with new one
