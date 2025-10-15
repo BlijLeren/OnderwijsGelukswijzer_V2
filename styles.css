@@ -720,6 +720,10 @@ h3 {
   max-width: 90%;
 }
 
+body[data-theme="quiz_intro"] {
+  background-color: #ffffff;
+}
+
 /* Theme-specific styles */
 body[data-theme="thema1"] {
   background-color: #ffffff;
