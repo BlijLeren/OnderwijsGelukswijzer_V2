@@ -624,18 +624,6 @@ h3 {
   font-size: 0.75rem;
 }
 
-/* Arrow animation */
-.tab input:not(:checked) + .tab__label:hover::after {
-  animation: bounce 0.5s infinite;
-}
-@keyframes bounce {
-  25% {
-    transform: rotate(90deg) translate(0.25rem);
-  }
-  75% {
-    transform: rotate(90deg) translate(-0.25rem);
-  }
-}
 /* end accorion */
 
 .next-intro-button {
