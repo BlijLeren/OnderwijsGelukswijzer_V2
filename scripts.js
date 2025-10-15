@@ -2,7 +2,6 @@ let quizData;
 let currentQuestion = 0;
 let choices = [];
 let isNavigating = false; // Add this at the top with other variables
-let sliderInstances = new Map(); // Add this with other global variables at the top
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(SplitText);
@@ -73,8 +72,8 @@ function startQuiz() {
 function showQuestion() {
   const question = quizData[currentQuestion];
 
-  // Set theme attribute on body
-  document.body.setAttribute("data-theme", question.thema);
+  // Set theme attribute on body using themanummer instead of thema
+  document.body.setAttribute("data-theme", question.themanummer);
 
   document.getElementById("progress").textContent = `${currentQuestion + 1}. ${
     question.onderdeelnaam
@@ -169,21 +168,19 @@ function showResults() {
     "agora-percentage"
   ).textContent = `${agoraPercentage}%`;
 
-  // Calculate theme stats
-  const themes = ["Structuur", "Nieuwsgierigheid", "Samenwerking", "Motivatie"];
+  // Update theme stats calculation to use themanummer
+  const themes = ["thema1", "thema2", "thema3", "thema4"];
   themes.forEach((theme) => {
-    const themeQuestions = quizData.filter((q) => q.thema === theme);
+    const themeQuestions = quizData.filter((q) => q.themanummer === theme);
     const themeAnswers = themeQuestions
       .map((q) => choices[quizData.indexOf(q)])
-      .filter((c) => c); // Filter out undefined answers
+      .filter((c) => c);
 
     if (themeAnswers.length > 0) {
       const themeAgora = themeAnswers.filter((c) => c === "Agora").length;
       const themePercentage = (themeAgora / themeAnswers.length) * 100;
 
-      const percentElement = document.getElementById(
-        `${theme.toLowerCase()}-percentage`
-      );
+      const percentElement = document.getElementById(`${theme}-percentage`);
       percentElement.style.left = `${themePercentage}%`;
       percentElement.innerHTML = `<span class="stat-value">${Math.round(
         themePercentage
@@ -191,8 +188,6 @@ function showResults() {
     }
   });
 
-  populateStructuurSlider(); // <-- Call the function here
-  populateNieuwsgierigheidSlider();
   // GSAP animations
 
   // console.clear();
@@ -259,201 +254,6 @@ function showResults() {
     });
   }, 50);
 }
-
-//GSAP Cards
-function initializeSlider(sliderElement) {
-  // Cleanup existing instance if it exists
-  if (sliderInstances.has(sliderElement)) {
-    sliderInstances.get(sliderElement).kill();
-    sliderInstances.delete(sliderElement);
-  }
-
-  const slides = gsap.utils.toArray(sliderElement.querySelectorAll(".slide"));
-  const snapPoints = slides.map((slide, i) => -(slide.offsetWidth + 16) * i);
-  const mySnap = gsap.utils.snap(snapPoints);
-
-  const instance = Draggable.create(sliderElement, {
-    type: "x",
-    bounds: {
-      maxX: 0,
-      minX: window.innerWidth - sliderElement.scrollWidth - 50,
-    },
-    inertia: true,
-    snap: {
-      x: (v) => mySnap(v),
-    },
-  })[0];
-
-  sliderInstances.set(sliderElement, instance);
-  return instance;
-}
-
-// Call initializeSlider after populating the slides
-function populateStructuurSlider() {
-  const structuurQuestions = quizData.filter((q) => q.thema === "Structuur");
-  const slider = document.getElementById("structuur-slider");
-
-  // Clear existing slides
-  slider.innerHTML = "";
-
-  structuurQuestions.forEach((question, index) => {
-    const choice = choices[quizData.indexOf(question)];
-    if (choice) {
-      const otherChoice = choice === "Regulier" ? "Agora" : "Regulier";
-      const slide = document.createElement("div");
-      slide.className = `slide ${choice.toLowerCase()}`;
-      slide.innerHTML = `
-        <div class="slide-header">
-          <div class="slide-title">${question.onderdeelnaam}</div>
-        </div>
-        <div class="slide-content active" data-type="${choice}">
-          <div class="slide-choice">${question.opties[choice].kind}</div>
-          <div class="slide-choice">${question.opties[choice].ouder}</div>
-        </div>
-        <div class="slide-content" data-type="${otherChoice}">
-          <div class="slide-choice">${question.opties[otherChoice].kind}</div>
-          <div class="slide-choice">${question.opties[otherChoice].ouder}</div>
-        </div>
-        <button class="toggle-btn" title="Wissel antwoord">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
-            <path d="M8.22673 13.3292C8.51492 14.1471 9.06116 14.8493 9.78313 15.3298C10.5051 15.8103 11.3637 16.0432 12.2296 15.9934C13.0954 15.9436 13.9216 15.6137 14.5837 15.0535C15.2458 14.4933 15.7078 13.7332 15.9003 12.8876C16.0927 12.042 16.0051 11.1567 15.6507 10.3652C15.2962 9.57374 14.6941 8.91887 13.9351 8.4993C13.176 8.07974 12.3012 7.91819 11.4424 8.03902C10.0777 8.23101 9.0827 9.23345 8 10M8 10V7M8 10H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </button>
-      `;
-      slider.appendChild(slide);
-
-      // Add toggle functionality
-      const toggleBtn = slide.querySelector(".toggle-btn");
-      const contents = slide.querySelectorAll(".slide-content");
-
-      // Set initial perspective
-      slide.style.perspective = "1000px";
-      slide.querySelector(".slide-content.active").style.backfaceVisibility =
-        "hidden";
-
-      toggleBtn.addEventListener("click", () => {
-        // Prevent multiple clicks during animation
-        if (toggleBtn.disabled) return;
-        toggleBtn.disabled = true;
-
-        // First half of flip
-        gsap.to(slide, {
-          rotationX: 90,
-          duration: 0.3,
-          ease: "power1.Out",
-          onComplete: () => {
-            // Switch content at midpoint of flip
-            contents.forEach((content) => content.classList.toggle("active"));
-            slide.className = `slide ${
-              slide.classList.contains("regulier") ? "agora" : "regulier"
-            }`;
-
-            // Second half of flip
-            gsap.to(slide, {
-              rotationX: 0,
-              duration: 0.3,
-              ease: "power1.Out",
-              onComplete: () => {
-                toggleBtn.disabled = false;
-              },
-            });
-          },
-        });
-      });
-    }
-  });
-
-  // Replace the setTimeout at the end with:
-  setTimeout(() => {
-    const slider = document.getElementById("structuur-slider");
-    initializeSlider(slider);
-  }, 100);
-}
-
-function populateNieuwsgierigheidSlider() {
-  const NieuwsgierigheidQuestions = quizData.filter(
-    (q) => q.thema === "Nieuwsgierigheid"
-  );
-  const slider = document.getElementById("Nieuwsgierigheid-slider");
-
-  // Clear existing slides
-  slider.innerHTML = "";
-
-  NieuwsgierigheidQuestions.forEach((question, index) => {
-    const choice = choices[quizData.indexOf(question)];
-    if (choice) {
-      const otherChoice = choice === "Regulier" ? "Agora" : "Regulier";
-      const slide = document.createElement("div");
-      slide.className = `slide ${choice.toLowerCase()}`;
-      slide.innerHTML = `
-        <div class="slide-header">
-          <div class="slide-title">${question.onderdeelnaam}</div>
-        </div>
-        <div class="slide-content active" data-type="${choice}">
-          <div class="slide-choice">${question.opties[choice].kind}</div>
-          <div class="slide-choice">${question.opties[choice].ouder}</div>
-        </div>
-        <div class="slide-content" data-type="${otherChoice}">
-          <div class="slide-choice">${question.opties[otherChoice].kind}</div>
-          <div class="slide-choice">${question.opties[otherChoice].ouder}</div>
-        </div>
-        <button class="toggle-btn" title="Wissel antwoord">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
-            <path d="M8.22673 13.3292C8.51492 14.1471 9.06116 14.8493 9.78313 15.3298C10.5051 15.8103 11.3637 16.0432 12.2296 15.9934C13.0954 15.9436 13.9216 15.6137 14.5837 15.0535C15.2458 14.4933 15.7078 13.7332 15.9003 12.8876C16.0927 12.042 16.0051 11.1567 15.6507 10.3652C15.2962 9.57374 14.6941 8.91887 13.9351 8.4993C13.176 8.07974 12.3012 7.91819 11.4424 8.03902C10.0777 8.23101 9.0827 9.23345 8 10M8 10V7M8 10H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </button>
-      `;
-      slider.appendChild(slide);
-
-      // Add toggle functionality
-      const toggleBtn = slide.querySelector(".toggle-btn");
-      const contents = slide.querySelectorAll(".slide-content");
-
-      // Set initial perspective
-      slide.style.perspective = "1000px";
-      slide.querySelector(".slide-content.active").style.backfaceVisibility =
-        "hidden";
-
-      toggleBtn.addEventListener("click", () => {
-        // Prevent multiple clicks during animation
-        if (toggleBtn.disabled) return;
-        toggleBtn.disabled = true;
-
-        // First half of flip
-        gsap.to(slide, {
-          rotationX: 90,
-          duration: 0.3,
-          ease: "power1.Out",
-          onComplete: () => {
-            // Switch content at midpoint of flip
-            contents.forEach((content) => content.classList.toggle("active"));
-            slide.className = `slide ${
-              slide.classList.contains("regulier") ? "agora" : "regulier"
-            }`;
-
-            // Second half of flip
-            gsap.to(slide, {
-              rotationX: 0,
-              duration: 0.3,
-              ease: "power1.Out",
-              onComplete: () => {
-                toggleBtn.disabled = false;
-              },
-            });
-          },
-        });
-      });
-    }
-  });
-
-  // Replace the setTimeout at the end with:
-  setTimeout(() => {
-    const slider = document.getElementById("Nieuwsgierigheid-slider");
-    initializeSlider(slider);
-  }, 100);
-}
-
-//gsap cards end
 
 function showView(viewId) {
   // Fade out all views
