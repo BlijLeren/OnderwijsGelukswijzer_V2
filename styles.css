@@ -733,10 +733,10 @@ body[data-theme="quiz_intro"] {
 body[data-theme="thema1"] {
   background-color: #ffffff;
 
-  .transition1 {
+  /* .transition1 {
     fill: #ffffff;
     transition: fill 0.3s ease;
-  }
+  } */
 
   #option1 {
     background-color: #1995fa;
