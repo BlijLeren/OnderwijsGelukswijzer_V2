@@ -5,15 +5,15 @@
       "onderdeelnaam": "Structuur en Planning",
       "thema": "Structuur en Planning",
       "themanummer": "thema1",
-      "vraag": "Wat vind jij belangrijk binnen een schooldag?",
+      "vraag": "Hoe vind jij het fijn dat een schooldag is ingedeeld?",
       "opties": {
         "Regulier": {
-          "kind": "Elke dag vaste lessen",
-          "ouder": "Vaste vakken en roosters met duidelijk ritme"
+          "kind": "Met vaste lessen en tijden voor elk vak.",
+          "ouder": "Een schooldag met een vast rooster, vaste vakken en een duidelijk ritme."
         },
         "Agora": {
-          "kind": "Je plant zelf je dag",
-          "ouder": "Vrijheid om je tijd zelf in te vullen binnen een duidelijke planning"
+          "kind": "Met een vaste start, maar daarna plan ik zelf wat ik ga doen.",
+          "ouder": "Een dag met een gezamenlijke start, waarna leerlingen hun activiteiten grotendeels zelf plannen binnen duidelijke afspraken."
         }
       }
     },
@@ -25,12 +25,12 @@
       "vraag": "Wat helpt jou om nieuwe dingen te leren?",
       "opties": {
         "Regulier": {
-          "kind": "De docent zegt wat je leert",
-          "ouder": "Vaste doelen en opdrachten per vak"
+          "kind": "Als een leraar uitlegt wat ik moet leren.",
+          "ouder": "Leren aan de hand van lesdoelen en opdrachten die door een docent worden aangereikt."
         },
         "Agora": {
-          "kind": "Je kiest zelf wat je wilt leren",
-          "ouder": "Eigen leerdoelen en vraagstukken"
+          "kind": "Als ik zelf kies wat ik wil leren en een coach me helpt met mijn plan.",
+          "ouder": "Leerlingen kiezen eigen leerdoelen en krijgen begeleiding van een coach die helpt richting en structuur aan te brengen."
         }
       }
     },
@@ -39,15 +39,15 @@
       "onderdeelnaam": "Structuur en Planning",
       "thema": "Structuur en Planning",
       "themanummer": "thema1",
-      "vraag": "Hoe wil jij leren en je opdrachten doen op school?",
+      "vraag": "Hoe werk jij het liefst aan opdrachten of projecten?",
       "opties": {
         "Regulier": {
-          "kind": "Je weet precies wat je moet doen",
-          "ouder": "Veel structuur, minder keuzevrijheid"
+          "kind": "Met duidelijke uitleg en stappen die ik kan volgen.",
+          "ouder": "Werken aan vaste opdrachten binnen de kaders van de lesstof en vakken."
         },
         "Agora": {
-          "kind": "Je mag veel zelf kiezen",
-          "ouder": "Vrijheid binnen duidelijke begeleiding"
+          "kind": "Door zelf te bedenken wat ik wil onderzoeken of maken.",
+          "ouder": "Werken aan persoonlijke projecten of uitdagingen die de leerling zelf bedenkt, met begeleiding van een coach."
         }
       }
     },
@@ -57,15 +57,15 @@
       "onderdeelnaam": "Leerstof en Autonomie",
       "thema": "Leerstof en Autonomie",
       "themanummer": "thema2",
-      "vraag": "Hoe wil je dat leren gaat voor jou?",
+      "vraag": "Hoe wil jij leren op school?",
       "opties": {
         "Regulier": {
-          "kind": "Iedereen leert tegelijk",
-          "ouder": "Het tempo ligt voor alle leerlingen ongeveer gelijk"
+          "kind": "Ik leer met de andere leerlingen dezelfde dingen tegelijk.",
+          "ouder": "Leerlingen volgen een vast programma per leerjaar en werken aan dezelfde leerstof."
         },
         "Agora": {
-          "kind": "Je leert op je eigen tempo",
-          "ouder": "Ruimte om langer bij iets stil te staan of juist sneller door te gaan"
+          "kind": "Ik leer op mijn eigen tempo en kies wat ik wil onderzoeken.",
+          "ouder": "Leerlingen werken in hun eigen tempo aan persoonlijke leerdoelen en onderwerpen die bij hun interesse en niveau passen."
         }
       }
     },
@@ -77,12 +77,12 @@
       "vraag": "Wanneer vind jij leren het leukst?",
       "opties": {
         "Regulier": {
-          "kind": "Je maakt opdrachten uit boeken",
-          "ouder": "Vaste projecten binnen vakken"
+          "kind": "Als er opdrachten en uitleg zijn uit boeken.",
+          "ouder": "De nadruk ligt op vakgerichte lessen met leerdoelen en vaste lesmaterialen."
         },
         "Agora": {
-          "kind": "Je werkt aan projecten over thema's die jij interessant vind",
-          "ouder": "Projectgericht leren vanuit eigen ideeën en interesses"
+          "kind": "Als ik iets leer dat ik echt interessant vind.",
+          "ouder": "Leerlingen werken aan thema’s of projecten die uit hun eigen interesses."
         }
       }
     },
@@ -91,15 +91,15 @@
       "onderdeelnaam": "Leerstof en Autonomie",
       "thema": "Leerstof en Autonomie",
       "themanummer": "thema2",
-      "vraag": "Over welke dingen wil jij zelf beslissen op school?",
+      "vraag": "Waarover beslis jij het liefst zelf op school?",
       "opties": {
         "Regulier": {
-          "kind": "Je kiest hoe je opdrachten uitvoert binnen de les",
-          "ouder": "Leerlingen maken keuzes binnen de kaders van de vakken en opdrachten"
+          "kind": "Over hoe ik mijn opdrachten uitvoer binnen de les.",
+          "ouder": "Keuzeruimte in aanpak en tempo binnen de lessen en vakken."
         },
         "Agora": {
-          "kind": "Je kiest welke onderwerpen en opdrachten je wilt doen",
-          "ouder": "Leerlingen bepalen zelf welke leerdoelen en projecten ze volgen, ondersteund door een coach of docent"
+          "kind": "Over wat ik wil leren en hoe ik dat aanpak.",
+          "ouder": "Leerlingen bepalen zelf hun leerdoelen en manier van werken, binnen duidelijke begeleiding en verantwoordelijkheid."
         }
       }
     },
@@ -109,15 +109,15 @@
       "onderdeelnaam": "Leren leren",
       "thema": "Leren leren",
       "themanummer": "thema3",
-      "vraag": "Wat doe je graag als je iets interessant vindt?",
+      "vraag": "Wat doe jij als je iets interessant vindt?",
       "opties": {
         "Regulier": {
-          "kind": "Je leert wat er in de les wordt verteld",
-          "ouder": "Nieuwsgierigheid binnen vaste lesstof"
+          "kind": "Ik luister goed en leer wat er wordt uitgelegd.",
+          "ouder": "Nieuwsgierigheid krijgt vorm binnen lessen en opdrachten van het curriculum."
         },
         "Agora": {
-          "kind": "Je mag zelf dingen onderzoeken",
-          "ouder": "Ruimte voor initiatief en creativiteit in leren"
+          "kind": "Ik ga zelf op onderzoek om er meer over te weten.",
+          "ouder": "Leerlingen onderzoeken eigen vragen en krijgen ruimte om ideeën te verkennen en uit te diepen."
         }
       }
     },
@@ -126,15 +126,15 @@
       "onderdeelnaam": "Leren leren",
       "thema": "Leren leren",
       "themanummer": "thema3",
-      "vraag": "Hoe werk je het liefst samen met anderen?",
+      "vraag": "Hoe werk jij het liefst samen met anderen?",
       "opties": {
         "Regulier": {
-          "kind": "Je werkt samen aan opdrachten in de les",
-          "ouder": "Groepswerk binnen vakken"
+          "kind": "In groepjes aan opdrachten van de les.",
+          "ouder": "Samenwerken binnen vakgerichte lessen en groepsopdrachten."
         },
         "Agora": {
-          "kind": "Je helpt elkaar bij projecten",
-          "ouder": "Samenwerken rond eigen vraagstukken en doelen"
+          "kind": "Met anderen aan projecten die we samen hebben bedacht.",
+          "ouder": "Samenwerken aan persoonlijke of gezamenlijke projecten."
         }
       }
     },
@@ -143,50 +143,33 @@
       "onderdeelnaam": "Leren leren",
       "thema": "Leren leren",
       "themanummer": "thema3",
-      "vraag": "Wat wil jij doen als je iets niet meteen begrijpt en meer wilt weten?",
+      "vraag": "Wat wil je graag doen als je iets niet begrijpt?",
       "opties": {
         "Regulier": {
-          "kind": "Je volgt de stappen van de les of opdracht om het antwoord te vinden",
-          "ouder": "Leerlingen werken binnen de kaders van de opdrachten en toetsen"
+          "kind": "Ik vraag uitleg aan een leraar en probeer het opnieuw.",
+          "ouder": "Leerlingen krijgen uitleg en oefenen verder binnen de structuur van de les of toets."
         },
         "Agora": {
-          "kind": "Je blijft vragen en zoekt uit hoe het echt werkt, tot je het begrijpt",
-          "ouder": "Leerlingen onderzoeken onderwerpen door eigen vragen te stellen en te verkennen, ondersteund door docenten indien nodig"
-        }
-      }
-    },
-    {
-      "introquestion": "yes",
-      "onderdeelnaam": "Ontwikkeling en Begeleiding",
-      "thema": "Ontwikkeling en Begeleiding",
-      "themanummer": "thema4",
-      "vraag": "Hoe wil je graag te horen krijgen of je iets goed hebt gedaan?",
-      "opties": {
-        "Regulier": {
-          "kind": "Je krijgt cijfers",
-          "ouder": "Voortgang wordt beoordeeld met toetsen en rapportcijfers"
-        },
-        "Agora": {
-          "kind": "Je krijgt tips en tops in plaats van cijfers",
-          "ouder": "Feedback en reflectie vormen de beoordeling"
+          "kind": "Ik zoek verder tot ik het snap en bespreek het met anderen of een coach.",
+          "ouder": "Leerlingen onderzoeken de vraag op eigen manier en krijgen begeleiding bij het vinden van hun antwoorden."
         }
       }
     },
 
     {
-      "introquestion": "no",
+      "introquestion": "yes",
       "onderdeelnaam": "Ontwikkeling en Begeleiding",
       "thema": "Ontwikkeling en Begeleiding",
       "themanummer": "thema4",
-      "vraag": "Op welke manier wil je geholpen worden bij leren?",
+      "vraag": "Hoe hoor jij het liefst of je iets goed hebt gedaan?",
       "opties": {
         "Regulier": {
-          "kind": "De leraar helpt de klas",
-          "ouder": "Begeleiding via docent of mentor"
+          "kind": "Met cijfers of punten op een toets.",
+          "ouder": "Voortgang wordt gevolgd via cijfers, toetsen en rapportmomenten."
         },
         "Agora": {
-          "kind": "Je hebt een eigen coach",
-          "ouder": "Persoonlijke 1-op-1 begeleiding bij je leerproces"
+          "kind": "Met feedback en tips van een begeleider of klasgenoot.",
+          "ouder": "Ontwikkeling wordt besproken via gesprekken, reflectie en feedback in plaats van cijfers."
         }
       }
     },
@@ -195,15 +178,32 @@
       "onderdeelnaam": "Ontwikkeling en Begeleiding",
       "thema": "Ontwikkeling en Begeleiding",
       "themanummer": "thema4",
-      "vraag": "Hoe wil jij terugkijken op wat je hebt geleerd?",
+      "vraag": "Hoe word jij het liefst geholpen als iets moeilijk is?",
       "opties": {
         "Regulier": {
-          "kind": "Je kijkt naar je cijfers voor opdrachten en toetsen om te zien wat goed ging",
-          "ouder": "Ouders volgen voortgang via cijfers, opdrachten en korte feedbackmomenten"
+          "kind": "Een leraar helpt mij of legt het nog een keer uit.",
+          "ouder": "Begeleiding vindt plaats door een docent binnen de les."
         },
         "Agora": {
-          "kind": "Je kijkt naar wat je zelf hebt gedaan, en praat hierover mede leerlingen en leraren",
-          "ouder": "Ouders krijgen inzicht via de reflecties die hun kind bijhoudt en via gesprekken over sterke en zwakke punten, met een duidelijk overzicht van vaardigheden en ontwikkeling op papier"
+          "kind": "Een coach helpt mij één-op-één om verder te komen.",
+          "ouder": "Leerlingen krijgen persoonlijke begeleiding bij hun leerproces en motivatie, vaak in individuele gesprekken."
+        }
+      }
+    },
+    {
+      "introquestion": "no",
+      "onderdeelnaam": "Ontwikkeling en Begeleiding",
+      "thema": "Ontwikkeling en Begeleiding",
+      "themanummer": "thema4",
+      "vraag": "Hoe kijk jij graag terug op wat je hebt geleerd?",
+      "opties": {
+        "Regulier": {
+          "kind": "Door te kijken naar mijn cijfers en wat goed of minder goed ging.",
+          "ouder": "Voortgang wordt zichtbaar via cijfers, toetsen en korte evaluaties per vak."
+        },
+        "Agora": {
+          "kind": "Door te praten over wat ik heb gedaan en geleerd, en wat ik volgende keer beter kan doen.",
+          "ouder": "Reflectie en voortgang worden besproken via persoonlijke gesprekken en portfolio’s waarin ontwikkeling zichtbaar is."
         }
       }
     }
